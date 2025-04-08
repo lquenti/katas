@@ -14,7 +14,7 @@ int main() {
     sum += 2*l*w + 2*w*h + 2*h*l;
     sum += min(l*w, min(w*h, h*l));
 
-    sum2 += min(l+l+w+w, l+l+h+h);
+    sum2 += min(l+l+w+w, min(w+w+h+h, l+l+h+h));
     sum2 += l*w*h;
   }
   printf("sum: %ld\n", sum);
