@@ -2,14 +2,13 @@
 class Solution {
   public:
     std::vector<int> replaceElements(std::vector<int> &arr) {
-      for (size_t i{0}; i<arr.size()-1; ++i) {
-        int best{-1};
-        for (size_t j{i+1}; j<arr.size(); ++j) {
-          best=std::max(best,arr[j]);
-        }
-        arr[i]=best;
+      int best_val{-1};
+      int curr;
+      for (int i=arr.size()-1; i>=0; --i) {
+        curr=arr[i];
+        arr[i]=best_val;
+        best_val=std::max(best_val, curr);
       }
-      arr[arr.size()-1]=-1;
       return arr;
     }
 };
