@@ -23,3 +23,37 @@ public:
     }
 };
 */
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> res;
+        sort(nums.begin(), nums.end());
+        for (int i=0; i<nums.size(); ++i) {
+            // early termination optimization
+            if (nums[i] > 0) {
+                break;
+            }
+
+
+            int j=i+1;
+            int k=nums.size()-1;
+            while (j<k) {
+                int curr=nums[j]+nums[k];
+                if (curr == -nums[i]) {
+                    res.insert({nums[i], nums[j], nums[k]});
+                    j++;
+                    k--;
+                } else if (curr < -nums[i]) {
+                    j++;
+                } else {
+                    k--;
+                }
+            }
+        }
+        vector<vector<int>> res2;
+        for (auto x : res) {
+            res2.push_back(x);
+        }
+        return res2;
+        }
+    };
